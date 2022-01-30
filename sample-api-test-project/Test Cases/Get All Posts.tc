@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Get all posts test</description>
+   <name>Get All Posts</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>86e96fff-29af-480c-b9d2-c8c6117e104f</testCaseGuid>
+   <variable>
+      <defaultValue>0</defaultValue>
+      <description></description>
+      <id>391d06e7-d49d-48cf-b59a-2e6df6240569</id>
+      <masked>false</masked>
+      <name>totalPosts</name>
+   </variable>
+</TestCaseEntity>
