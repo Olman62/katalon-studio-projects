@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Get the post comments by specifying the path parameter postId.</description>
+   <name>Get Post Comments by postId (path)</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>e6e3ff07-527e-4e51-895a-40f8465378d9</testCaseGuid>
+</TestCaseEntity>

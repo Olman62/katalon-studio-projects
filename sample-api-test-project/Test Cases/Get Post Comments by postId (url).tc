@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Get the post comments by URL parameter postId</description>
+   <name>Get Post Comments by postId (url)</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>ae84f58c-9be6-437a-a269-41dd46c4c279</testCaseGuid>
+</TestCaseEntity>

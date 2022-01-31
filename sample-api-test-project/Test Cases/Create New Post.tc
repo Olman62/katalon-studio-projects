@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Create new post</description>
+   <name>Create New Post</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>b0509681-3ad5-4150-8582-ab0bb2448aa9</testCaseGuid>
+</TestCaseEntity>

@@ -16,21 +16,24 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
-
+import postsPackage.PostClass
 import groovy.json.JsonSlurper as JsonSlurper
 
 def jsonSlurper = new JsonSlurper()
 
-'Get all the posts'
-allPostsResponse = WS.sendRequest(findTestObject('Get All Posts'))
+'Update a post partially'
+def updatedPostResponse = WS.sendRequest(findTestObject('Update a Post Parameter', [('id') : '101']))
 
-WS.verifyResponseStatusCode(allPostsResponse, 200)
+WS.verifyResponseStatusCode(updatedPostResponse, 200)
 
-List allPosts = jsonSlurper.parseText(allPostsResponse.responseText)
-totalPosts = allPosts.size()
+def updatedPostObject = jsonSlurper.parseText(updatedPostResponse.responseText)
 
-assert ('The posts total is not 100') && totalPosts==100
-tname=totalPosts.getClass().getName()
-assert tname=='java.lang.Integer'
+assert 'The updatedPostObject is null' && updatedPostObject!=null
 
-printf("Total posts: %d \n", totalPosts) 
+def updatedPost = updatedPostObject as PostClass
+
+postClassName=updatedPost.getClass().getName()
+
+assert 'the value postClassName is not type of postsPackage.PostClass' && postClassName=='postsPackage.PostClass'
+
+assert ('The updated post title is not modified') && updatedPost.title=='A test post modified'

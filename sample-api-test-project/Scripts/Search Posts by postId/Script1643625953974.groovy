@@ -16,21 +16,23 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
-
 import groovy.json.JsonSlurper as JsonSlurper
+import postsPackage.PostClass
 
 def jsonSlurper = new JsonSlurper()
 
-'Get all the posts'
-allPostsResponse = WS.sendRequest(findTestObject('Get All Posts'))
+'Search the posts by specified postId'
+postsResponse = WS.sendRequest(findTestObject('Search Posts by postId'))
 
-WS.verifyResponseStatusCode(allPostsResponse, 200)
+WS.verifyResponseStatusCode(postsResponse, 200)
 
-List allPosts = jsonSlurper.parseText(allPostsResponse.responseText)
-totalPosts = allPosts.size()
+List posts = jsonSlurper.parseText(postsResponse.responseText)
+totalPosts = posts.size()
 
-assert ('The posts total is not 100') && totalPosts==100
-tname=totalPosts.getClass().getName()
-assert tname=='java.lang.Integer'
+assert ('The posts total is 0') && totalPosts>0
 
-printf("Total posts: %d \n", totalPosts) 
+def post1 = posts[0] as PostClass
+
+postClassName=post1.getClass().getName()
+
+assert 'the value postClassName is not type of postsPackage.PostClass' && postClassName=='postsPackage.PostClass'

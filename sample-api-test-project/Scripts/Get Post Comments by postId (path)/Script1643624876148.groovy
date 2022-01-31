@@ -16,21 +16,26 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
-
 import groovy.json.JsonSlurper as JsonSlurper
+import postsPackage.PostCommentClass
 
 def jsonSlurper = new JsonSlurper()
 
-'Get all the posts'
-allPostsResponse = WS.sendRequest(findTestObject('Get All Posts'))
+'Get the post comments by path parameter postId'
+postCommentsResponse = WS.sendRequest(findTestObject('Get Post Comments by postId (path)', [('postId') : '1']))
 
-WS.verifyResponseStatusCode(allPostsResponse, 200)
+WS.verifyResponseStatusCode(postCommentsResponse, 200)
 
-List allPosts = jsonSlurper.parseText(allPostsResponse.responseText)
-totalPosts = allPosts.size()
+List postComments = jsonSlurper.parseText(postCommentsResponse.responseText)
+totalComments = postComments.size()
 
-assert ('The posts total is not 100') && totalPosts==100
-tname=totalPosts.getClass().getName()
-assert tname=='java.lang.Integer'
+assert ('The comments total is 0') && totalComments>0
 
-printf("Total posts: %d \n", totalPosts) 
+def comment1 = postComments[0] as PostCommentClass
+
+commentClassName=comment1.getClass().getName()
+
+assert 'the value commentClassName is not type of postsPackage.PostCommentClass' && commentClassName=='postsPackage.PostCommentClass'
+
+
+

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Delete a post by ID</description>
+   <name>Delete Post by ID</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>d36a0b38-80e1-4425-be43-45c1adc95e66</testCaseGuid>
+</TestCaseEntity>

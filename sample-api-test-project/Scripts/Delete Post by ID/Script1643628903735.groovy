@@ -17,20 +17,12 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
+import org.openqa.selenium.Keys as Keys
+
 import groovy.json.JsonSlurper as JsonSlurper
 
-def jsonSlurper = new JsonSlurper()
+'Delete a post by ID'
+def deleteResponse = WS.sendRequest(findTestObject('Delete Post by ID', [('id') : '1']))
 
-'Get all the posts'
-allPostsResponse = WS.sendRequest(findTestObject('Get All Posts'))
+WS.verifyResponseStatusCode(deleteResponse, 200)
 
-WS.verifyResponseStatusCode(allPostsResponse, 200)
-
-List allPosts = jsonSlurper.parseText(allPostsResponse.responseText)
-totalPosts = allPosts.size()
-
-assert ('The posts total is not 100') && totalPosts==100
-tname=totalPosts.getClass().getName()
-assert tname=='java.lang.Integer'
-
-printf("Total posts: %d \n", totalPosts) 

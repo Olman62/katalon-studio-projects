@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Search the posts by specified postId</description>
+   <name>Search Posts by postId</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>c93c310d-5160-4976-bafb-e994470dbc4b</testCaseGuid>
+</TestCaseEntity>

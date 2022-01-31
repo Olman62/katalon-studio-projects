@@ -16,21 +16,24 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
-
+import postsPackage.PostClass
 import groovy.json.JsonSlurper as JsonSlurper
 
 def jsonSlurper = new JsonSlurper()
 
-'Get all the posts'
-allPostsResponse = WS.sendRequest(findTestObject('Get All Posts'))
+'Create a new post'
+def createdPostResponse = WS.sendRequest(findTestObject('Create New Post'))
 
-WS.verifyResponseStatusCode(allPostsResponse, 200)
+WS.verifyResponseStatusCode(createdPostResponse, 201)
 
-List allPosts = jsonSlurper.parseText(allPostsResponse.responseText)
-totalPosts = allPosts.size()
+def createdPostObject = jsonSlurper.parseText(createdPostResponse.responseText)
 
-assert ('The posts total is not 100') && totalPosts==100
-tname=totalPosts.getClass().getName()
-assert tname=='java.lang.Integer'
+assert 'The createdPostResponse is null' && createdPostObject!=null
 
-printf("Total posts: %d \n", totalPosts) 
+def createdPost = createdPostObject as PostClass
+
+postClassName=createdPost.getClass().getName()
+
+assert 'the value postClassName is not type of postsPackage.PostClass' && postClassName=='postsPackage.PostClass'
+
+assert ('The created post ID is not 101') && createdPost.id==101
